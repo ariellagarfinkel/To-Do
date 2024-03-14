@@ -38,6 +38,9 @@ handleAllToDo();
             <li className="list-group-item">
               <input className="form-check-input me-1" type="checkbox" value="" id="firstCheckbox"/>
               <label className="form-check-label" for="firstCheckbox">{todo.title}</label>
+              <label className="form-check-label" for="firstCheckbox">{todo.comment}</label>
+              <label className="form-check-label" for="firstCheckbox">{todo.completed ? "completed" : "not completed"}</label>
+              <label className="form-check-label" for="firstCheckbox">{todo.dueDate}</label>
             </li>
             {/* <li className="list-group-item">
               <input className="form-check-input me-1" type="checkbox" value="" id="secondCheckbox"/>
@@ -55,4 +58,3 @@ handleAllToDo();
 }
 
 export default Content;
-
