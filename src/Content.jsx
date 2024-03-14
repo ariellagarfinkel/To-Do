@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import "./Content.css";
 
 function Content() {
 
@@ -37,19 +38,14 @@ handleAllToDo();
           <ul className="list-group">
             <li className="list-group-item">
               <input className="form-check-input me-1" type="checkbox" value="" id="firstCheckbox"/>
-              <label className="form-check-label" for="firstCheckbox">{todo.title}</label>
-              <label className="form-check-label" for="firstCheckbox">{todo.comment}</label>
-              <label className="form-check-label" for="firstCheckbox">{todo.completed ? "completed" : "not completed"}</label>
-              <label className="form-check-label" for="firstCheckbox">{todo.dueDate}</label>
+              <label className="form-check-label" htmlFor="firstCheckbox"><strong>{todo.title}</strong></label>
+              <br />
+              <strong>Comment:</strong> <label className="form-check-label" htmlFor="firstCheckbox">{todo.comment}</label>
+              <br />
+              <strong>Due Date:</strong> <label className="form-check-label" htmlFor="firstCheckbox">{todo.dueDate}</label>
+              <br />
+              <strong>Completed?</strong> <label className="form-check-label" htmlFor="firstCheckbox">{todo.completed ? "completed" : "not completed"}</label>
             </li>
-            {/* <li className="list-group-item">
-              <input className="form-check-input me-1" type="checkbox" value="" id="secondCheckbox"/>
-              <label className="form-check-label" for="secondCheckbox">{todo.title}</label>
-            </li>
-            <li className="list-group-item">
-              <input className="form-check-input me-1" type="checkbox" value="" id="thirdCheckbox"/>
-              <label className="form-check-label" for="thirdCheckbox">{todo.title}</label>
-            </li> */}
           </ul>
       </div>
       ))}
