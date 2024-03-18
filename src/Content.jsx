@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Content.css";
+// import CalendarComponent from "./CalendarComponent";
+import DatePicker from "./CalendarComponent";
 
 function Content() {
 
@@ -51,6 +53,9 @@ handleAllToDo();
           </ul>
       </div>
       ))}
+      <div>
+        <DatePicker />
+      </div>
     </> 
  ) 
 }
