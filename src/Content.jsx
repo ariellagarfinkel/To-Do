@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Content.css";
 
 function Content() {
@@ -36,11 +37,12 @@ handleAllToDo();
         {alltodo.map((todo) =>(
         <div key = {todo.title}>
           <ul className="list-group">
-            <li className="list-group-item">
+            <li className={"list-group-item " + (todo.completed ? "list-group-item-success" : "list-group-item-info")}>
               <input className="form-check-input me-1" type="checkbox" value="" id="firstCheckbox"/>
+              {/* when click that you completed the box the color turns green */}
               <label className="form-check-label" htmlFor="firstCheckbox"><strong>{todo.title}</strong></label>
               <br />
-              <strong>Comment:</strong> <label className="form-check-label" htmlFor="firstCheckbox">{todo.comment}</label>
+              <strong> Comment:</strong><label className="form-check-label" htmlFor="firstCheckbox">{todo.comment}</label>
               <br />
               <strong>Due Date:</strong> <label className="form-check-label" htmlFor="firstCheckbox">{todo.dueDate}</label>
               <br />
@@ -52,5 +54,7 @@ handleAllToDo();
     </> 
  ) 
 }
-
 export default Content;
+
+
+// checked={todo.completed}
