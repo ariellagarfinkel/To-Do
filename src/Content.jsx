@@ -5,6 +5,7 @@ import "./Content.css";
 // import CalendarComponent from "./CalendarComponent";
 import DatePicker from "./CalendarComponent";
 
+
 function Content() {
 
   const [todo, setToDo] = useState({});
@@ -47,6 +48,14 @@ handleAllToDo();
               <strong> Comment:</strong><label className="form-check-label" htmlFor="firstCheckbox">{todo.comment}</label>
               <br />
               <strong>Due Date:</strong> <label className="form-check-label" htmlFor="firstCheckbox">{todo.dueDate}</label>
+              <br />
+                <div class="btn-group">
+                  <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> Due Date </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Action 2</a></li>
+                  </ul>
+                </div>
               <br />
               <strong>Completed?</strong> <label className="form-check-label" htmlFor="firstCheckbox">{todo.completed ? "completed" : "not completed"}</label>
             </li>
