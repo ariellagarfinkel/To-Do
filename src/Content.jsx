@@ -8,11 +8,6 @@ import DatePicker from "./CalendarComponent";
 
 function Content() {
 
-  // const [selectedValue, setSelectedValue] = useState('');
-  // const handleChange = (event) => {
-  //   setSelectedValue(event.target.value);
-  // };
-  
   const [todo, setToDo] = useState({});
   const [alltodo, setAllToDo] = useState([]);
 
@@ -56,17 +51,9 @@ handleAllToDo();
                 <div class="btn-group">
                   <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> Due Date </button>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Action 2</a></li>
+                    <li><a class="dropdown-item" href="#"><DatePicker /></a></li>
                   </ul>
                 </div>
-                {/* <select value={selectedValue} onChange={handleChange}>
-                    <option value="">Select an option</option>
-                    <option value="option1">Option 1</option>
-                    <option value="option2">Option 2</option>
-                    <option value="option3">Option 3</option>
-                </select>
-                  <p>Selected Value: {selectedValue}</p> */}
               <br />
               <input className="form-check-input me-1" type="checkbox" value="" id="firstCheckbox"/>
               <strong>Completed?</strong> <label className="form-check-label" htmlFor="firstCheckbox">{todo.completed ? "completed" : "not completed"}</label>
@@ -75,7 +62,7 @@ handleAllToDo();
       </div>
       ))}
       <div>
-        <DatePicker />
+        
       </div>
     </> 
  ) 
@@ -84,4 +71,3 @@ export default Content;
 
 
 // checked={todo.completed}
-// DropdownButton
