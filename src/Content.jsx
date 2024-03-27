@@ -41,7 +41,7 @@ handleAllToDo();
         <div key = {todo.title}>
           <ul className="list-group">
             <li className={"list-group-item " + (todo.completed ? "list-group-item-success" : "list-group-item-info")}>
-              {/* when click that you completed the box the color turns green */}
+              {/* when click that you completed the box the color turns green and moves to the bottom of the list*/}
               <label className="form-check-label" htmlFor="firstCheckbox"><strong>{todo.title}</strong></label>
               <br />
               <strong> Comment:</strong><label className="form-check-label" htmlFor="firstCheckbox">{todo.comment}</label>

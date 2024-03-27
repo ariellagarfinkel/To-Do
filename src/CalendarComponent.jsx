@@ -1,6 +1,8 @@
 // import Calendar from "react-calendar";
 import DatePicker from "react-date-picker";
 import { useState } from "react";
+import 'react-date-picker/dist/DatePicker.css';
+import 'react-calendar/dist/Calendar.css';
 
 function CalendarComponent() {
     const [value, onChange] = useState(new Date());
