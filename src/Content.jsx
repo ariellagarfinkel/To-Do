@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Content.css";
-// import CalendarComponent from "./CalendarComponent";
 import DatePicker from "./CalendarComponent";
 
 
@@ -39,35 +38,41 @@ handleAllToDo();
       </div>
         {alltodo.map((todo) =>(
         <div key = {todo.title}>
-          <ul className="list-group">
+          <ul className="list-group row" >
             <li className={"list-group-item " + (todo.completed ? "list-group-item-success" : "list-group-item-info")}>
-              {/* when click that you completed the box the color turns green and moves to the bottom of the list*/}
-              <label className="form-check-label" htmlFor="firstCheckbox"><strong>{todo.title}</strong></label>
-              <br />
-              <strong> Comment:</strong><label className="form-check-label" htmlFor="firstCheckbox">{todo.comment}</label>
-              <br />
-              <strong>Due Date:</strong> <label className="form-check-label" htmlFor="firstCheckbox">{todo.dueDate}</label>
-              <br />
+              <div>
+              <strong> Title: </strong><label className="form-check-label" htmlFor="firstCheckbox">{todo.title}</label>
+              </div>
+              <div className="form-floating mb-3">
+                <input type="title" className="form-control" id="floatingInput" placeholder="Title"/>
+                <label for="floatingInput">Title</label>
+              </div>
+              <div>
+                <strong>Due Date:</strong> <label className="form-check-label" htmlFor="firstCheckbox">{todo.dueDate}</label>
+              </div>
                 <div class="btn-group">
                   <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> Due Date </button>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#"><DatePicker /></a></li>
                   </ul>
                 </div>
-              <br />
+              <div>
+                <strong> Comment:</strong><label className="form-check-label" htmlFor="firstCheckbox">{todo.comment}</label>
+              </div>
+              <div className="form-floating mb-3">
+                <input type="comment" className="form-control" id="floatingInput" placeholder="comment"/>
+                <label for="floatingInput">Comment</label>
+              </div>
               <input className="form-check-input me-1" type="checkbox" value="" id="firstCheckbox"/>
-              <strong>Completed?</strong> <label className="form-check-label" htmlFor="firstCheckbox">{todo.completed ? "completed" : "not completed"}</label>
+              <div>
+                <strong>Completed?</strong> <label className="form-check-label" htmlFor="firstCheckbox">{todo.completed ? "completed" : "not completed"}</label>
+              </div>
             </li>
           </ul>
+        <br />
       </div>
       ))}
-      <div>
-        
-      </div>
     </> 
  ) 
 }
 export default Content;
-
-
-// checked={todo.completed}
