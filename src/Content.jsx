@@ -9,14 +9,7 @@ function Content() {
 
   const [todo, setToDo] = useState({});
   const [alltodo, setAllToDo] = useState([]);
-
-  const handleToDo = () => {
-    console.log("handle toDo");
-    axios.get("http://localhost:8080/todo/mytodo").then((response) => {
-      console.log(response.data);
-      setToDo(response.data);
-    });
-  };
+  const [createToDo, setCreateToDo] = useState([]);
 
   const handleAllToDo = () => {
     console.log("handle allToDo");
@@ -26,10 +19,18 @@ function Content() {
     });
   };
 
-useEffect(()=>{
-handleToDo();
-handleAllToDo();
-}, [])
+  const handleCreateToDo = (params, successCallback) => {
+    console.log("handleCreateToDo", params);
+    axios.post("http://localhost:8080/todo/createtodo", params).then((response) => {
+      setToDo([...todo, response.data]);
+      successCallback();
+    });
+  }
+
+// post with axios. send the new todo object (JSON) to the back
+// react router for the new page
+
+useEffect(()=>{ handleAllToDo(); }, [])
 
  return (
     <>
@@ -37,8 +38,8 @@ handleAllToDo();
         <h1>List of To Dos</h1>
       </div>
         {alltodo.map((todo) =>(
-        <div key = {todo.title}>
-          <ul className="list-group row" >
+        <div key = {todo.title} >
+          <ul className="list-group" >
             <li className={"list-group-item " + (todo.completed ? "list-group-item-success" : "list-group-item-info")}>
               <div>
               <strong> Title: </strong><label className="form-check-label" htmlFor="firstCheckbox">{todo.title}</label>
@@ -50,10 +51,10 @@ handleAllToDo();
               <div>
                 <strong>Due Date:</strong> <label className="form-check-label" htmlFor="firstCheckbox">{todo.dueDate}</label>
               </div>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> Due Date </button>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#"><DatePicker /></a></li>
+                <div className="btn-group">
+                  <button type="button" className="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> Due Date </button>
+                  <ul className="dropdown-menu">
+                    <li><a className="dropdown-item" href="#"><DatePicker /></a></li>
                   </ul>
                 </div>
               <div>
@@ -72,6 +73,15 @@ handleAllToDo();
         <br />
       </div>
       ))}
+{/* 
+      const handleSubmit = (event) => {
+        event.preventDefault();
+        handleCreateToDo({
+          // the form
+        }, () => {
+          console.log("To Do created successfully ")
+        })
+      } */}
     </> 
  ) 
 }
