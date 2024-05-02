@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Content.css";
+import "./CreateToDo";
 import DatePicker from "./CalendarComponent";
 
 
@@ -37,6 +38,7 @@ useEffect(()=>{ handleAllToDo(); }, [])
       <div>
         <h1>List of To Dos</h1>
       </div>
+      {/* <form onSubmit={handleCreateToDo}> */}
         {alltodo.map((todo) =>(
         <div key = {todo.title} >
           <ul className="list-group" >
@@ -73,6 +75,8 @@ useEffect(()=>{ handleAllToDo(); }, [])
         <br />
       </div>
       ))}
+    {/* </form> */}
+    <button type="button" class="btn btn-outline-secondary">Create a To-Do</button>
 {/* 
       const handleSubmit = (event) => {
         event.preventDefault();
