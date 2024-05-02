@@ -1,9 +1,10 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import axios from "axios";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import DatePicker from "./CalendarComponent";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Content.css";
-import "./CreateToDo";
-import DatePicker from "./CalendarComponent";
+import { CreateToDo } from "./CreateToDo";
 
 
 function Content() {
@@ -11,6 +12,7 @@ function Content() {
   const [todo, setToDo] = useState({});
   const [alltodo, setAllToDo] = useState([]);
   const [createToDo, setCreateToDo] = useState([]);
+  const navigate = useNavigate();
 
   const handleAllToDo = () => {
     console.log("handle allToDo");
@@ -27,9 +29,6 @@ function Content() {
       successCallback();
     });
   }
-
-// post with axios. send the new todo object (JSON) to the back
-// react router for the new page
 
 useEffect(()=>{ handleAllToDo(); }, [])
 
@@ -76,7 +75,17 @@ useEffect(()=>{ handleAllToDo(); }, [])
       </div>
       ))}
     {/* </form> */}
-    <button type="button" class="btn btn-outline-secondary">Create a To-Do</button>
+    <div>
+      <Routes>
+        <Route path="createToDo" element = {<CreateToDo />}> </Route>
+      </Routes>
+    </div>
+    <button 
+      type="button" 
+      className="btn btn-outline-secondary" 
+      onClick={() => navigate("/createToDo")}>
+        Create a To-Do
+    </button>
 {/* 
       const handleSubmit = (event) => {
         event.preventDefault();
