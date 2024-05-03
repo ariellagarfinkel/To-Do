@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import React from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import DatePicker from "./CalendarComponent";
+import CreateToDo from "./CreateToDo";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Content.css";
-import { CreateToDo } from "./CreateToDo";
 
 
 function Content() {
@@ -30,14 +31,13 @@ function Content() {
     });
   }
 
-useEffect(()=>{ handleAllToDo(); }, [])
+useEffect(()=>{ handleAllToDo() }, [])
 
  return (
     <>
       <div>
         <h1>List of To Dos</h1>
       </div>
-      {/* <form onSubmit={handleCreateToDo}> */}
         {alltodo.map((todo) =>(
         <div key = {todo.title} >
           <ul className="list-group" >
@@ -74,10 +74,9 @@ useEffect(()=>{ handleAllToDo(); }, [])
         <br />
       </div>
       ))}
-    {/* </form> */}
     <div>
       <Routes>
-        <Route path="createToDo" element = {<CreateToDo />}> </Route>
+        <Route path="createToDo" element = {<handleCreateToDo />}> </Route>
       </Routes>
     </div>
     <button 
@@ -86,15 +85,6 @@ useEffect(()=>{ handleAllToDo(); }, [])
       onClick={() => navigate("/createToDo")}>
         Create a To-Do
     </button>
-{/* 
-      const handleSubmit = (event) => {
-        event.preventDefault();
-        handleCreateToDo({
-          // the form
-        }, () => {
-          console.log("To Do created successfully ")
-        })
-      } */}
     </> 
  ) 
 }
