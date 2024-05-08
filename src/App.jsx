@@ -1,40 +1,19 @@
-// import logo from './logo.svg';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
 import  Header from "./Header";
 import  Content from "./Content";
 import  Footer from "./Footer";
-import { BrowserRouter } from "react-router-dom";
+import  CreateToDo from "./CreateToDo";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="container">
       <BrowserRouter>
       <Header />
-      <Content />
       <Footer />
+      <Routes>
+        <Route path="/" element = {<Content />}> </Route>
+        <Route path="/createToDo" element = {<CreateToDo />}> </Route>
+      </Routes>
       </BrowserRouter>
     </div>
   )

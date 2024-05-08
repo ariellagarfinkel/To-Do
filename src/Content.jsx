@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import DatePicker from "./CalendarComponent";
-import CreateToDo from "./CreateToDo";
+import CreateToDo from "./CreateToDo.jsx";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Content.css";
 
@@ -23,13 +23,6 @@ function Content() {
     });
   };
 
-  const handleCreateToDo = (params, successCallback) => {
-    console.log("handleCreateToDo", params);
-    axios.post("http://localhost:8080/todo/createtodo", params).then((response) => {
-      setToDo([...todo, response.data]);
-      successCallback();
-    });
-  }
 
 useEffect(()=>{ handleAllToDo() }, [])
 
@@ -45,26 +38,26 @@ useEffect(()=>{ handleAllToDo() }, [])
               <div>
               <strong> Title: </strong><label className="form-check-label" htmlFor="firstCheckbox">{todo.title}</label>
               </div>
-              <div className="form-floating mb-3">
+              {/* <div className="form-floating mb-3">
                 <input type="title" className="form-control" id="floatingInput" placeholder="Title"/>
                 <label for="floatingInput">Title</label>
-              </div>
+              </div> */}
               <div>
                 <strong>Due Date:</strong> <label className="form-check-label" htmlFor="firstCheckbox">{todo.dueDate}</label>
               </div>
-                <div className="btn-group">
+                {/* <div className="btn-group">
                   <button type="button" className="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> Due Date </button>
                   <ul className="dropdown-menu">
                     <li><a className="dropdown-item" href="#"><DatePicker /></a></li>
                   </ul>
-                </div>
+                </div> */}
               <div>
                 <strong> Comment:</strong><label className="form-check-label" htmlFor="firstCheckbox">{todo.comment}</label>
               </div>
-              <div className="form-floating mb-3">
+              {/* <div className="form-floating mb-3">
                 <input type="comment" className="form-control" id="floatingInput" placeholder="comment"/>
                 <label for="floatingInput">Comment</label>
-              </div>
+              </div> */}
               <input className="form-check-input me-1" type="checkbox" value="" id="firstCheckbox"/>
               <div>
                 <strong>Completed?</strong> <label className="form-check-label" htmlFor="firstCheckbox">{todo.completed ? "completed" : "not completed"}</label>
@@ -75,9 +68,9 @@ useEffect(()=>{ handleAllToDo() }, [])
       </div>
       ))}
     <div>
-      <Routes>
-        <Route path="createToDo" element = {<handleCreateToDo />}> </Route>
-      </Routes>
+      {/* <Routes>
+        <Route path="createToDo" element = {<CreateToDo />}> </Route>
+      </Routes> */}
     </div>
     <button 
       type="button" 
