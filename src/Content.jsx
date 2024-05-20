@@ -1,9 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
-import DatePicker from "./CalendarComponent";
-import CreateToDo from "./CreateToDo.jsx";
+import { useNavigate } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Content.css";
 
@@ -38,26 +36,12 @@ useEffect(()=>{ handleAllToDo() }, [])
               <div>
               <strong> Title: </strong><label className="form-check-label" htmlFor="firstCheckbox">{todo.title}</label>
               </div>
-              {/* <div className="form-floating mb-3">
-                <input type="title" className="form-control" id="floatingInput" placeholder="Title"/>
-                <label for="floatingInput">Title</label>
-              </div> */}
               <div>
                 <strong>Due Date:</strong> <label className="form-check-label" htmlFor="firstCheckbox">{todo.dueDate}</label>
               </div>
-                {/* <div className="btn-group">
-                  <button type="button" className="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> Due Date </button>
-                  <ul className="dropdown-menu">
-                    <li><a className="dropdown-item" href="#"><DatePicker /></a></li>
-                  </ul>
-                </div> */}
               <div>
                 <strong> Comment:</strong><label className="form-check-label" htmlFor="firstCheckbox">{todo.comment}</label>
               </div>
-              {/* <div className="form-floating mb-3">
-                <input type="comment" className="form-control" id="floatingInput" placeholder="comment"/>
-                <label for="floatingInput">Comment</label>
-              </div> */}
               <input className="form-check-input me-1" type="checkbox" value="" id="firstCheckbox"/>
               <div>
                 <strong>Completed?</strong> <label className="form-check-label" htmlFor="firstCheckbox">{todo.completed ? "completed" : "not completed"}</label>

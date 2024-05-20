@@ -1,47 +1,33 @@
-import React from "react";
 import { useState } from "react";
 import DatePicker from "react-date-picker";
 import axios from "axios";
 
 
-function CreateToDo(props) {
+function CreateToDo() {
 
-  const [todo, setToDo] = useState({});
   const [title, setTitle] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [comment, setComment] = useState("");
 
-  const handleSubmit = (event) => {
-     event.preventDefault();
-    //  const params = new FormData(event.target);
-     const params = {
-      title: title,
-      dueDate: dueDate,
-      comment: comment
-     };
-     console.log("submit to do", params);
-    //  handleCreateToDo(params, () => event.target.reset());
-     handleCreateToDo(params, () => {
-      setTitle("");
-      setDueDate(new Date());
-      setComment("");
-     });
-     console.log("To Do created successfully ");
-    }
-// create an object to send back to the server. post data to the server. 
+  const url = "http://localhost:3000/todo/createtodo"
 
-    const handleCreateToDo = (params, successCallback) => {
-      console.log("handleCreateToDo", params);
-      axios.post("http://localhost:8080/todo/createtodo", params).then((response) => {
-        setToDo([...todo, response.data]);
-        successCallback();
-      });
-    }
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+      try {
+        const response = await axios.post(url, {title: title, comment: comment});
+        console.log(response.data);
+      }catch (error) {
+        console.log(error.response);
+      }
+      console.log(title, dueDate, comment);
+    };
+   
+   
 
     return(
       <form onSubmit={handleSubmit}> 
               <div className="form-floating mb-3">
-                <input type="title" className="form-control" id="floatingInput" placeholder="Title"/>
+                <input type="title" className="form-control" id="floatingInput" placeholder="Title" value={title} onChange={(event) => setTitle(event.target.value)}/>
                 <label for="floatingInput">Title</label>
               </div>
                 <div className="btn-group">
@@ -51,15 +37,16 @@ function CreateToDo(props) {
                   </ul>
                 </div>
               <div className="form-floating mb-3">
-                <input type="comment" className="form-control" id="floatingInput" placeholder="comment"/>
+                <input type="comment" className="form-control" id="floatingInput" placeholder="comment" value={comment} onChange={(event) => setComment(event.target.value)}/>
                 <label for="floatingInput">Comment</label>
               </div>
               <button 
                 type="submit" 
-                className="btn btn-outline-secondary" onSubmit={handleCreateToDo}>
+                className="btn btn-outline-secondary">
                 Submit
               </button>
       </form> 
       )
-}
+    }
 export default CreateToDo;
+
