@@ -6,15 +6,18 @@ import axios from "axios";
 function CreateToDo() {
 
   const [title, setTitle] = useState("");
-  const [dueDate, setDueDate] = useState("");
+  const [dueDate, setDueDate] = useState("May 23, 2024");
   const [comment, setComment] = useState("");
 
-  const url = "http://localhost:3000/todo/createtodo"
+
+  const url = "http://localhost:8080/todo/createtodo"
+  const person_id = 1
+
 
     const handleSubmit = async (event) => {
       event.preventDefault();
       try {
-        const response = await axios.post(url, {title: title, comment: comment});
+        const response = await axios.post(url, {title: title, comment: comment, personId: person_id, dueDate: dueDate});
         console.log(response.data);
       }catch (error) {
         console.log(error.response);
